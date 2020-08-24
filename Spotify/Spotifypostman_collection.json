@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "8f82727a-851d-4e1d-8f49-9f89f9bac91c",
+		"name": "Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "info usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7026ca6-0dab-4237-9c2e-655ecbcbe84b",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error cuando el token sea inválido\", function(){\r",
+							"    pm.response.to.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 600 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BQCgo-5BMRL4xGcUIo_2RC2EJVeRuAOUIAhxoSbkhfl4iWCQi2Lvh8h3RtQlEgi48XTWesbx1a8rgj6GprbkhgZkqkOsPi0PdNSUSrGQlFld0REuEIUllwQHbJ8E81HeVuwjXzZuNXm7tKiWP64_H30EYDJiWGV-kgVCgp_WoyeLQPK2spD6RDXO8ALndgOHDJnPigaX0Ok4QqvOmrRvcmYYs_wB1JYYViYYIBZSfdiDFCH_pXTcAEnX4-dTm60OcSU9KHmbH5SPBrvab91-XeO35z8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/me",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e10c095a-539a-4001-9165-b7abaa76b1d8",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error cuando el token sea inválido\", function(){\r",
+							"    pm.response.to.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 600 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar user id spotify\", function(){\r",
+							"    pm.expect(pm.response.text()).to.have.include(\"marpj_0215\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BQCgo-5BMRL4xGcUIo_2RC2EJVeRuAOUIAhxoSbkhfl4iWCQi2Lvh8h3RtQlEgi48XTWesbx1a8rgj6GprbkhgZkqkOsPi0PdNSUSrGQlFld0REuEIUllwQHbJ8E81HeVuwjXzZuNXm7tKiWP64_H30EYDJiWGV-kgVCgp_WoyeLQPK2spD6RDXO8ALndgOHDJnPigaX0Ok4QqvOmrRvcmYYs_wB1JYYViYYIBZSfdiDFCH_pXTcAEnX4-dTm60OcSU9KHmbH5SPBrvab91-XeO35z8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/me/playlists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"me",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar info playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "205b1bc4-d60a-42bf-ad71-daa0eb4c9de2",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error cuando el token sea invalido\", function(){\r",
+							"    pm.response.to.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 600 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar user id spotify\", function(){\r",
+							"    pm.expect(pm.response.text()).to.have.include(\"marpj_0215\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BQCgo-5BMRL4xGcUIo_2RC2EJVeRuAOUIAhxoSbkhfl4iWCQi2Lvh8h3RtQlEgi48XTWesbx1a8rgj6GprbkhgZkqkOsPi0PdNSUSrGQlFld0REuEIUllwQHbJ8E81HeVuwjXzZuNXm7tKiWP64_H30EYDJiWGV-kgVCgp_WoyeLQPK2spD6RDXO8ALndgOHDJnPigaX0Ok4QqvOmrRvcmYYs_wB1JYYViYYIBZSfdiDFCH_pXTcAEnX4-dTm60OcSU9KHmbH5SPBrvab91-XeO35z8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/37i9dQZF1DX21ow0o1PZDE/tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"37i9dQZF1DX21ow0o1PZDE",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar una artista",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f082db3-8388-4fde-a289-457e9c362dd6",
+						"exec": [
+							"pm.test(\"Validar codigo de estatus cuando el token sea inválido\", function(){\r",
+							"    pm.expect(pm.response).to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que la respuesta sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BQCgo-5BMRL4xGcUIo_2RC2EJVeRuAOUIAhxoSbkhfl4iWCQi2Lvh8h3RtQlEgi48XTWesbx1a8rgj6GprbkhgZkqkOsPi0PdNSUSrGQlFld0REuEIUllwQHbJ8E81HeVuwjXzZuNXm7tKiWP64_H30EYDJiWGV-kgVCgp_WoyeLQPK2spD6RDXO8ALndgOHDJnPigaX0Ok4QqvOmrRvcmYYs_wB1JYYViYYIBZSfdiDFCH_pXTcAEnX4-dTm60OcSU9KHmbH5SPBrvab91-XeO35z8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/search?q=Juan Gabriel&type=artist&market=from_token&limit=1&offset=0&include_external",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Juan Gabriel"
+						},
+						{
+							"key": "type",
+							"value": "artist"
+						},
+						{
+							"key": "market",
+							"value": "from_token"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "include_external",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear nueva playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04ca7f8e-5a62-4e0c-9304-2a074a4441bf",
+						"exec": [
+							"pm.test(\"Validar codigo de estatus cuando el token sea inválido\", function(){\r",
+							"    pm.expect(pm.response).to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que la respuesta sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BQCgo-5BMRL4xGcUIo_2RC2EJVeRuAOUIAhxoSbkhfl4iWCQi2Lvh8h3RtQlEgi48XTWesbx1a8rgj6GprbkhgZkqkOsPi0PdNSUSrGQlFld0REuEIUllwQHbJ8E81HeVuwjXzZuNXm7tKiWP64_H30EYDJiWGV-kgVCgp_WoyeLQPK2spD6RDXO8ALndgOHDJnPigaX0Ok4QqvOmrRvcmYYs_wB1JYYViYYIBZSfdiDFCH_pXTcAEnX4-dTm60OcSU9KHmbH5SPBrvab91-XeO35z8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"New Playlist\",\r\n  \"description\": \"New playlist description\",\r\n  \"public\": false\r\n}"
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/users/{{user_id}}/playlists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}",
+						"playlists"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "marpj_0215",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

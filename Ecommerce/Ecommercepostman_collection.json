@@ -1,0 +1,912 @@
+{
+	"info": {
+		"_postman_id": "75459f90-f837-4929-bb51-cc74507ae0ca",
+		"name": "E-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ver categorias",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "75729a0c-5be9-4326-a3d2-0e7dee00c299",
+						"exec": [
+							"pm.test(\"Validar codigo de estatus exitoso\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que la respuesta sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"var jsonData=pm.response.json();\r",
+							"\r",
+							"console.log(\"data \", jsonData.categories[0].categories[0].code)\r",
+							"\r",
+							"pm.test(\"Validar informacion del body\", function(){\r",
+							"    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq(\"1020\");\r",
+							"    pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que dentro del body se encuentre la palabra label\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"label\");\r",
+							"    pm.expect(pm.response.text()).to.deep.include(\"label\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1/public/categories/insert?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1",
+						"public",
+						"categories",
+						"insert"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver categorias ver1.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd00f7d7-e9d7-413f-8ebc-3052e9a82891",
+						"exec": [
+							"pm.test(\"Validar codigo de estatus exitoso\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que la respuesta sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"var jsonData=pm.response.json();\r",
+							"\r",
+							"console.log(\"data \", jsonData.categories[0].categories[0].code)\r",
+							"\r",
+							"pm.test(\"Validar informacion del body\", function(){\r",
+							"    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq(\"1020\");\r",
+							"    pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que dentro del body se encuentre la palabra label\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"label\");\r",
+							"    pm.expect(pm.response.text()).to.deep.include(\"label\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/public/categories/filter?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"public",
+						"categories",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver regiones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b6aa5d9-41b3-4d56-85c2-83e7a4e2668b",
+						"exec": [
+							"pm.test(\"Validar estatus\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que la respuesta sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que dentro del body se incluya una palabra específica\", function(){\r",
+							"    pm.expect(pm.response.text()).to.be.include(\"Todo México\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "320c0d84-5102-45f3-86d4-5f9fa1be8981",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/public/regions?lang=es&depth=1",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"public",
+						"regions"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						},
+						{
+							"key": "depth",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar alertas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "12ba55dd-915e-462f-bb30-570b7325e91a",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error\", function(){\r",
+							"    pm.response.to.not.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 600 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic {{Token_uuidAtoken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://webapi.segundamano.mx/alerts/v1/private/account/74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d/alert",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"alerts",
+						"v1",
+						"private",
+						"account",
+						"74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d",
+						"alert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request crear token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d6c56713-5dd3-49b9-8b2f-bf5818846fab",
+						"exec": [
+							"var jsonData = pm.response.json()\r",
+							"console.log(jsonData.access_token)\r",
+							"console.log(jsonData.account.account_id)\r",
+							"console.log(jsonData.account.uuid)\r",
+							"\r",
+							"pm.environment.set(\"access_token\", jsonData.access_token)\r",
+							"pm.environment.set(\"uuid\", jsonData.account.uuid)\r",
+							"pm.environment.set(\"accountID\", jsonData.account.account_id)\r",
+							"pm.environment.set(\"accountID\", jsonData.account.account_id.split(\"/\")[3])\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error\", function(){\r",
+							"    pm.response.to.not.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 1000 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar header content type\", function(){\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cfb46389-46a4-410b-84f1-21fe50d47729",
+						"exec": [
+							"var email = pm.environment.get('correoValido');\r",
+							"var pass = pm.environment.get('passwordValido');\r",
+							"\r",
+							"console.log(email,pass)\r",
+							"\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"console.log(encodeKeys)\r",
+							"\r",
+							"pm.environment.set(\"Base64\",encodeKeys);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Base64}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/private/accounts?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"private",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una cuenta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3959a861-7644-4eda-be6d-0782d1910680",
+						"exec": [
+							"pm.test(\"Validar codigo de estatus Unauthorized\", function(){\r",
+							"    pm.expect(pm.response).to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se haya creado la cuenta\", function(){\r",
+							"    pm.expect(pm.response.status).to.not.eq(201);\r",
+							"  });\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function(){\r",
+							"    pm.response.to.be.withBody;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar texto de respuesta\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"ACCOUNT_VERIFICATION_REQUIRED\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "913d9379-c961-4ed1-95ad-f27edd43bfdf",
+						"exec": [
+							"//Creammos una variable que mande a llamar una funcion para generar numeros random\r",
+							"let numrandom = Math.floor(Math.random() * Math.floor(99999999999999999) + 10000);\r",
+							"\r",
+							"//Imprimir en consola\r",
+							"console.log(\"Valor correo\", numrandom)\r",
+							"\r",
+							"// Creamos una variable llamada email para formar un correo electronoco\r",
+							"var email = \"agente\" + numrandom.toString(36) + \"@mailinator.com\";\r",
+							"\r",
+							"//Seteamos una variable de ambiente donde guardamos el correo\r",
+							"pm.environment.set(\"email\", email)\r",
+							"\r",
+							"// Mostramos en consola el correo\r",
+							"console.log(\"email\", email);\r",
+							"\r",
+							"// Creamos una variable para concatenar\r",
+							"var emailFormado = (pm.environment.get(\"email\")).concat(\":\", (pm.environment.get(\"password\")))\r",
+							"\r",
+							"// Encodeamos en base 64 lo concatenado anteriormente\r",
+							"var encoded = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(emailFormado))\r",
+							"// Mostramos en cosola lo encodead\r",
+							"console.log(\"Encode: \", encoded)\r",
+							"//Seteamos la variable donde se formo nuestro \"Token\"\r",
+							"pm.environment.set(\"base64\", encoded)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{base64}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":{\"email\":\"{{email}}\",\"phone\":6556654455,\"name\":\"AgenteVentas\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/private/accounts?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"private",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un anuncio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53709a52-7415-4896-843a-addd19f8cfd7",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error\", function(){\r",
+							"    pm.response.to.not.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 5s\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar header content type\", function(){\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "97e021ea-5c90-4cc5-a31e-602a67fec52e",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')(Se esta guardando la misma info de acuerdo a lo definido en request crear token)\r",
+							"//Misma info para generar un token\r",
+							"let email = \"marpj_0215@hotmail.com\";\r",
+							"console.log(\"Email: \", email)\r",
+							"var pass = pm.environment.get('passwordValido');\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"console.log(encodeKeys)\r",
+							"\r",
+							"pm.environment.set(\"Base64\",encodeKeys);\r",
+							"\r",
+							"//mandar un prerequest\r",
+							"pm.sendRequest({\r",
+							"    url: 'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err,res){\r",
+							"    console.log(\"Res sendRequest: \", res)\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonResponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token);\r",
+							"    pm.environment.set(\"uuid\", jsonResponse.account.uuid);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuidAtoken\", encode);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Token_uuidAtoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-source",
+						"value": "PHOENIX_DESKTOP",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"category\":\"8041\",\"subject\":\"Servico de consultoria\",\"body\":\"Consultoría de arquitectos a tus ordenes, pregunta por nuestros servicios\",\"price\":\"1\",\"region\":\"28\",\"municipality\":\"1963\",\"area\":\"83521\",\"phone_hidden\":\"true\"}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/accounts/74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d/up",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"accounts",
+						"74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d",
+						"up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear dirección",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6c85c342-5e1b-4c40-b922-1368f249d054",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')(Se esta guardando la misma info de acuerdo a lo definido en request crear token)\r",
+							"//Misma info para generar un token\r",
+							"let email = \"marpj_0215@hotmail.com\";\r",
+							"console.log(\"Email: \", email)\r",
+							"var pass = pm.environment.get('passwordValido');\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"console.log(encodeKeys)\r",
+							"\r",
+							"pm.environment.set(\"Base64\",encodeKeys);\r",
+							"\r",
+							"//mandar un prerequest\r",
+							"pm.sendRequest({\r",
+							"    url: 'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err,res){\r",
+							"    console.log(\"Res sendRequest: \", res)\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonResponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token);\r",
+							"    pm.environment.set(\"uuid\", jsonResponse.account.uuid);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuidAtoken\", encode);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d706ceb3-9f68-48ef-9e4c-3522aefe0fb1",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error\", function(){\r",
+							"    pm.response.to.not.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 600 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar header content type\", function(){\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Token_uuidAtoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact",
+							"value": "Vendedor 12",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "5564643858",
+							"type": "text"
+						},
+						{
+							"key": "rfc",
+							"value": "CUGM911502",
+							"type": "text"
+						},
+						{
+							"key": "zipCode",
+							"value": "11260",
+							"type": "text"
+						},
+						{
+							"key": "exteriorInfo",
+							"value": "Lop%C3%A9z%20Mateos",
+							"type": "text"
+						},
+						{
+							"key": "interiorInfo",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "region",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "224",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "5666",
+							"type": "text"
+						},
+						{
+							"key": "alias",
+							"value": "Mi direccion",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/addresses/v1/create",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"addresses",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a favoritos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "90ed24ae-db1c-4b22-8feb-c639a7b5aa65",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error\", function(){\r",
+							"    pm.response.to.not.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 600 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic {{Token_uuidAtoken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"list_ids\":[933387589]}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/favorites/v1/private/accounts/74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"favorites",
+						"v1",
+						"private",
+						"accounts",
+						"74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar favoritos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "722b07cb-c2f7-4300-9825-6a878f280dd0",
+						"exec": [
+							"pm.test(\"Validar codigo de respuesta exitoso\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que no se obtenga una respuesta de error\", function(){\r",
+							"    pm.response.to.not.be.error;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el body no este vacio\", function (){\r",
+							"\tpm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar tiempo de respuesta menor a 600 ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic {{Token_uuidAtoken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://webapi.segundamano.mx/favorites/v1/private/accounts/74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"favorites",
+						"v1",
+						"private",
+						"accounts",
+						"74f9bdd3-b0b9-4d27-b922-6bb98c2f3b0d"
+					],
+					"query": [
+						{
+							"key": "Accept",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "Au",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
